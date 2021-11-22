@@ -52,8 +52,38 @@ h <- hist(rate,
           breaks=30)
 text(h$mids,h$counts,labels=h$counts, adj=c(0.5, -0.5))
 
-mean(rate)
+print('Mean Rating')
+print(mean(rate))
 
 # h <- hist(rate, main="Restaurants Ratings", xlab="Rating from 1.0 to 5.0",col=brewer.pal(n = 30, name = "Set3"), breaks=30)
 ```
+
+### Plot to describe Restaurant Table Booking Option
+```{r}
+book_table = df$book_table
+barplot(table(book_table),
+      main = "Restaurants With Table Booking Option",
+      ylab = "Count",
+      col=brewer.pal(n = 3, name = "Pastel2"))
+table(book_table)
+```
+
+### In Bangalore city,in which area has maximum number of restaurants
+```{r}
+location = df$location
+barplot(table(location))
+setNames(data.frame(table(location)), c("Location", "Number of restaurants"))
+```
+
+### 'Rate' vs 'Restaurant type' graph
+```{r}
+#plot(df$rate, df$rest_type)
+
+# ggplot(df, aes(x = rate, y = rest_type)) +  geom_line()
+
+ggplot(df, aes(y = rate, x = rest_type)) + geom_line()
+
+#Dont paste this
+```
+
 

@@ -1,0 +1,1498 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20212.21.0712.0907                               -->
+<workbook source-build='2021.2.1 (20212.21.0712.0907)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='zomato' inline='true' name='federated.1uzl83e1tmp07w166gflz1km08hr' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='zomato' name='textscan.03vuy9p0i4edux1d7k7ty0hyux86'>
+            <connection class='textscan' directory='C:/Users/sethi/Downloads/Zomato-Banglore-Predicition' filename='zomato_pre-processed.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.03vuy9p0i4edux1d7k7ty0hyux86' name='zomato.csv' table='[zomato#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='url' ordinal='0' />
+            <column datatype='string' name='address' ordinal='1' />
+            <column datatype='string' name='name' ordinal='2' />
+            <column datatype='string' name='online_order' ordinal='3' />
+            <column datatype='string' name='book_table' ordinal='4' />
+            <column datatype='string' name='rate' ordinal='5' />
+            <column datatype='integer' name='votes' ordinal='6' />
+            <column datatype='string' name='phone' ordinal='7' />
+            <column datatype='string' name='location' ordinal='8' />
+            <column datatype='string' name='rest_type' ordinal='9' />
+            <column datatype='string' name='dish_liked' ordinal='10' />
+            <column datatype='string' name='cuisines' ordinal='11' />
+            <column datatype='integer' name='approx_cost(for two people)' ordinal='12' />
+            <column datatype='string' name='reviews_list' ordinal='13' />
+            <column datatype='string' name='menu_item' ordinal='14' />
+            <column datatype='string' name='listed_in(type)' ordinal='15' />
+            <column datatype='string' name='listed_in(city)' ordinal='16' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.03vuy9p0i4edux1d7k7ty0hyux86' name='zomato.csv' table='[zomato#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='url' ordinal='0' />
+            <column datatype='string' name='address' ordinal='1' />
+            <column datatype='string' name='name' ordinal='2' />
+            <column datatype='string' name='online_order' ordinal='3' />
+            <column datatype='string' name='book_table' ordinal='4' />
+            <column datatype='string' name='rate' ordinal='5' />
+            <column datatype='integer' name='votes' ordinal='6' />
+            <column datatype='string' name='phone' ordinal='7' />
+            <column datatype='string' name='location' ordinal='8' />
+            <column datatype='string' name='rest_type' ordinal='9' />
+            <column datatype='string' name='dish_liked' ordinal='10' />
+            <column datatype='string' name='cuisines' ordinal='11' />
+            <column datatype='integer' name='approx_cost(for two people)' ordinal='12' />
+            <column datatype='string' name='reviews_list' ordinal='13' />
+            <column datatype='string' name='menu_item' ordinal='14' />
+            <column datatype='string' name='listed_in(type)' ordinal='15' />
+            <column datatype='string' name='listed_in(city)' ordinal='16' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>url</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[url]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>url</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>address</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[address]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>address</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>online_order</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[online_order]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>online_order</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>book_table</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[book_table]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>book_table</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rate</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rate]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>rate</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>votes</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[votes]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>votes</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>phone</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[phone]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>phone</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[location]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>location</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rest_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rest_type]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>rest_type</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dish_liked</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dish_liked]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>dish_liked</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cuisines</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[cuisines]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>cuisines</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>approx_cost(for two people)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[approx_cost(for two people)]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>approx_cost(for two people)</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>reviews_list</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[reviews_list]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>reviews_list</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>menu_item</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[menu_item]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>menu_item</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>listed_in(type)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[listed_in(type)]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>listed_in(type)</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>listed_in(city)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[listed_in(city)]</local-name>
+            <parent-name>[zomato.csv]</parent-name>
+            <remote-alias>listed_in(city)</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='zomato.csv' datatype='table' name='[__tableau_internal_object_id__].[zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64]' role='measure' type='quantitative' />
+      <column caption='Address' datatype='string' name='[address]' role='dimension' type='nominal' />
+      <column caption='Approx Cost(For Two People)' datatype='integer' name='[approx_cost(for two people)]' role='measure' type='quantitative' />
+      <column caption='Book Table' datatype='string' name='[book_table]' role='dimension' type='nominal' />
+      <column caption='Cuisines' datatype='string' name='[cuisines]' role='dimension' type='nominal' />
+      <column caption='Dish Liked' datatype='string' name='[dish_liked]' role='dimension' type='nominal' />
+      <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Listed In(Type)' datatype='string' name='[listed_in(type)]' role='dimension' type='nominal' />
+      <column caption='Location' datatype='string' name='[location]' role='dimension' type='nominal' />
+      <column caption='Menu Item' datatype='string' name='[menu_item]' role='dimension' type='nominal' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Online Order' datatype='string' name='[online_order]' role='dimension' type='nominal' />
+      <column caption='Phone' datatype='string' name='[phone]' role='dimension' type='nominal' />
+      <column caption='Rate' datatype='string' name='[rate]' role='dimension' type='nominal' />
+      <column caption='Rest Type' datatype='string' name='[rest_type]' role='dimension' type='nominal' />
+      <column caption='Reviews List' datatype='string' name='[reviews_list]' role='dimension' type='nominal' />
+      <column caption='Url' datatype='string' name='[url]' role='dimension' type='nominal' />
+      <column caption='Votes' datatype='integer' name='[votes]' role='measure' type='quantitative' />
+      <column-instance column='[rest_type]' derivation='None' name='[none:rest_type:nk]' pivot='key' type='nominal' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:rest_type:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Bar&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Casual Dining, Bar&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Dhaba&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Microbrewery, Bar&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Sweet Shop&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Bakery&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Cafe, Bakery&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Lounge&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Quick Bites, Beverage Shop&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Bakery, Food Court&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Cafe, Food Court&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Dessert Parlor, Food Court&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Lounge, Microbrewery&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Quick Bites, Kiosk&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Bar, Pub&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Casual Dining, Microbrewery&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Fine Dining, Microbrewery&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Pop Up&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Takeaway, Delivery&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Bar, Cafe&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Casual Dining, Cafe&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Fine Dining&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Microbrewery, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Sweet Shop, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Bakery, Kiosk&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Cafe, Lounge&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Dessert Parlor, Kiosk&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Mess&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Quick Bites, Meat Shop&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Bhojanalya&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Confectionery&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Food Truck&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Quick Bites&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Bakery, Beverage Shop&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Cafe, Bar&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Dessert Parlor, Bakery&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Lounge, Bar&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Quick Bites, Cafe&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Beverage Shop, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Club&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Food Court, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Pub, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Bakery, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Cafe, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Dessert Parlor, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Mess, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Quick Bites, Mess&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Bar, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Casual Dining, Pub&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Food Court&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Pub&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Beverage Shop&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Casual Dining, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Food Court, Beverage Shop&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Pub, Bar&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Beverage Shop, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Club, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Food Court, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Pub, Microbrewery&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Cafe&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Delivery&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Kiosk&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Quick Bites, Bakery&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Bar, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Casual Dining, Irani Cafee&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Fine Dining, Bar&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Microbrewery, Lounge&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Sweet Shop, Quick Bites&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Bakery, Sweet Shop&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Casual Dining&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Dessert Parlor, Sweet Shop&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Microbrewery&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Quick Bites, Sweet Shop&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Bakery, Cafe&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Cafe, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Dessert Parlor, Beverage Shop&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Lounge, Cafe&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Quick Bites, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Beverage Shop, Cafe&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Casual Dining, Sweet Shop&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Food Court, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Pub, Cafe&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Bar, Lounge&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Casual Dining, Lounge&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Fine Dining, Lounge&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Microbrewery, Pub&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Takeaway&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Bakery, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Cafe, Dessert Parlor&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Dessert Parlor, Cafe&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Lounge, Casual Dining&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Quick Bites, Food Court&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='zomato.csv' id='zomato.csv_F35D4CD8CCEF4B7489E96730FCB7AB64'>
+            <properties context=''>
+              <relation connection='textscan.03vuy9p0i4edux1d7k7ty0hyux86' name='zomato.csv' table='[zomato#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='url' ordinal='0' />
+                  <column datatype='string' name='address' ordinal='1' />
+                  <column datatype='string' name='name' ordinal='2' />
+                  <column datatype='string' name='online_order' ordinal='3' />
+                  <column datatype='string' name='book_table' ordinal='4' />
+                  <column datatype='string' name='rate' ordinal='5' />
+                  <column datatype='integer' name='votes' ordinal='6' />
+                  <column datatype='string' name='phone' ordinal='7' />
+                  <column datatype='string' name='location' ordinal='8' />
+                  <column datatype='string' name='rest_type' ordinal='9' />
+                  <column datatype='string' name='dish_liked' ordinal='10' />
+                  <column datatype='string' name='cuisines' ordinal='11' />
+                  <column datatype='integer' name='approx_cost(for two people)' ordinal='12' />
+                  <column datatype='string' name='reviews_list' ordinal='13' />
+                  <column datatype='string' name='menu_item' ordinal='14' />
+                  <column datatype='string' name='listed_in(type)' ordinal='15' />
+                  <column datatype='string' name='listed_in(city)' ordinal='16' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D47F5A25-7DB9-4C08-B17A-85304FBEB65A}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Number of Restaurants in Each City</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column-instance column='[listed_in(city)]' derivation='Count' name='[cnt:listed_in(city):qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='None' name='[none:listed_in(city):nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]</rows>
+        <cols>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]</cols>
+      </table>
+      <simple-id uuid='{53860061-60D8-4F27-9E2F-46D21CFA54E9}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Restaurants with Online Ordering</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column-instance column='[listed_in(city)]' derivation='Count' name='[cnt:listed_in(city):qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column-instance column='[online_order]' derivation='None' name='[none:online_order:nk]' pivot='key' type='nominal' />
+            <column caption='Online Order' datatype='string' name='[online_order]' role='dimension' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='Count' name='[pcto:cnt:listed_in(city):qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' palette='purple_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.1uzl83e1tmp07w166gflz1km08hr].[pcto:cnt:listed_in(city):qk]' palette='purple_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:online_order:nk]' />
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' />
+              <size column='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' />
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[pcto:cnt:listed_in(city):qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{229F5DFA-C5F8-4449-8FA1-F193C74AB86D}' />
+    </worksheet>
+    <worksheet name='Sheet 4'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Different Restuarant Types</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column-instance column='[listed_in(type)]' derivation='Count' name='[cnt:listed_in(type):qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column caption='Listed In(Type)' datatype='string' name='[listed_in(type)]' role='dimension' type='nominal' />
+            <column-instance column='[rest_type]' derivation='None' name='[none:rest_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='Count' name='[pcto:cnt:listed_in(city):qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column caption='Rest Type' datatype='string' name='[rest_type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:rest_type:nk]' />
+              <groupfilter function='member' level='[none:rest_type:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[pcto:cnt:listed_in(city):qk]' />
+              <size column='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(type):qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-color' value='#a0cbe8' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{56F3C43C-1270-410C-8684-BCF62E7E61DF}' />
+    </worksheet>
+    <worksheet name='Sheet 5'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column caption='Book Table' datatype='string' name='[book_table]' role='dimension' type='nominal' />
+            <column-instance column='[rest_type]' derivation='Count' name='[cnt:rest_type:qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column-instance column='[book_table]' derivation='None' name='[none:book_table:nk]' pivot='key' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='None' name='[none:listed_in(city):nk]' pivot='key' type='nominal' />
+            <column-instance column='[rest_type]' derivation='None' name='[none:rest_type:nk]' pivot='key' type='nominal' />
+            <column caption='Rest Type' datatype='string' name='[rest_type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]'>
+            <groupfilter function='member' level='[none:listed_in(city):nk]' member='&quot;JP Nagar&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+              <lod column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:book_table:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk] * [federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:rest_type:qk])</rows>
+        <cols>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]</cols>
+      </table>
+      <simple-id uuid='{B501FF65-40EF-4341-A46F-337A8722ED41}' />
+    </worksheet>
+    <worksheet name='Sheet 5 (2)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column caption='Book Table' datatype='string' name='[book_table]' role='dimension' type='nominal' />
+            <column-instance column='[rest_type]' derivation='Count' name='[cnt:rest_type:qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column-instance column='[book_table]' derivation='None' name='[none:book_table:nk]' pivot='key' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='None' name='[none:listed_in(city):nk]' pivot='key' type='nominal' />
+            <column-instance column='[rest_type]' derivation='None' name='[none:rest_type:nk]' pivot='key' type='nominal' />
+            <column caption='Rest Type' datatype='string' name='[rest_type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]'>
+            <groupfilter function='member' level='[none:listed_in(city):nk]' member='&quot;JP Nagar&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>(([federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk] / [federated.1uzl83e1tmp07w166gflz1km08hr].[none:book_table:nk]) * [federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:rest_type:qk])</rows>
+        <cols>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]</cols>
+      </table>
+      <simple-id uuid='{86CEA450-21EB-4155-9FD9-118C3B65EA75}' />
+    </worksheet>
+    <worksheet name='Sheet 6'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Average Cost for 2 People in JP Nagar for different Restaurant Types</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zomato' name='federated.1uzl83e1tmp07w166gflz1km08hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1uzl83e1tmp07w166gflz1km08hr'>
+            <column caption='Approx Cost(For Two People)' datatype='integer' name='[approx_cost(for two people)]' role='measure' type='quantitative' />
+            <column-instance column='[approx_cost(for two people)]' derivation='Avg' name='[avg:approx_cost(for two people):qk]' pivot='key' type='quantitative' />
+            <column caption='Listed In(City)' datatype='string' name='[listed_in(city)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column-instance column='[listed_in(city)]' derivation='None' name='[none:listed_in(city):nk]' pivot='key' type='nominal' />
+            <column-instance column='[rest_type]' derivation='None' name='[none:rest_type:nk]' pivot='key' type='nominal' />
+            <column caption='Rest Type' datatype='string' name='[rest_type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]'>
+            <groupfilter function='member' level='[none:listed_in(city):nk]' member='&quot;JP Nagar&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:rest_type:nk]' />
+              <groupfilter function='member' level='[none:rest_type:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk]</column>
+            <column>[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='1' field='[federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.26287293434143066' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.26287293434143066' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk]' y-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' />
+              <text column='[federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2853591442108154' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk] + [federated.1uzl83e1tmp07w166gflz1km08hr].[avg:approx_cost(for two people):qk])</rows>
+        <cols>([federated.1uzl83e1tmp07w166gflz1km08hr].[none:listed_in(city):nk] / [federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk])</cols>
+      </table>
+      <simple-id uuid='{F3CF71E4-B95F-44CA-97D9-2DCF38263654}' />
+    </worksheet>
+    <worksheet name='Sheet 8'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6C1D1B4F-FB1D-4ECF-86EF-4F729FEA6904}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='8' param='horz' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='6' type-v2='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='49000' id='3' name='Sheet 2' w='41200' x='42000' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='5' name='Sheet 3' w='41200' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='11' name='Sheet 4' w='41200' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='13' name='Sheet 6' w='41200' x='42000' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='7' is-fixed='true' param='vert' type-v2='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='9125' id='9' name='Sheet 3' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type-v2='color' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6375' id='10' name='Sheet 3' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type-v2='size' w='16000' x='83200' y='10125'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='82500' id='12' name='Sheet 4' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' type-v2='color' w='16000' x='83200' y='16500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1400' minheight='1400' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='17' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='16' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='49000' id='5' is-fixed='true' name='Sheet 3' w='41200' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='9125' id='9' name='Sheet 3' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type-v2='color' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6375' id='10' name='Sheet 3' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type-v2='size' w='16000' x='83200' y='10125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='3' is-fixed='true' name='Sheet 2' w='41200' x='42000' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='11' is-fixed='true' name='Sheet 4' w='41200' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='82500' id='12' name='Sheet 4' pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' type-v2='color' w='16000' x='83200' y='16500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='13' is-fixed='true' name='Sheet 6' w='41200' x='42000' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{1483C94F-DB3B-4AC2-AA65-2AC111F18D96}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='37'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{DA92CD73-865E-4588-BF79-8C77F94741E2}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0267451D-479B-4136-AEC1-6344D8457428}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[cnt:listed_in(city):qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{9AC25216-3C51-4C39-94E2-031739B5CF67}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{D426AC33-6B45-42AC-9163-82DA645B01FA}' />
+    </window>
+    <window class='worksheet' name='Sheet 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{66FC9ECB-06EF-4AF1-AAE0-95071407C057}' />
+    </window>
+    <window class='worksheet' name='Sheet 5 (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1uzl83e1tmp07w166gflz1km08hr].[none:rest_type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3D52AAC7-3658-4409-A7E9-19558E8A103B}' />
+    </window>
+    <window class='worksheet' name='Sheet 8'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BE1DFC32-F9A9-48F0-BE78-7ACF97919FB0}' />
+    </window>
+    <window class='worksheet' name='Sheet 6'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{2A8782CA-5D46-4F6D-9BCC-6539D6047109}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 3'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 4'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 6'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{70B4D471-BEBC-46C6-AD30-0EFEE9A15CC8}' />
+    </window>
+  </windows>
+</workbook>
