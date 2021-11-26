@@ -1,0 +1,206 @@
+---
+title: "Zomato Banglore Plots"
+author: "19BCE1753-Daksh"
+date: "11/15/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Libraries
+```{r, echo=FALSE}
+library(dplyr)
+library(recommenderlab)
+library(data.table)
+library(reshape2)
+library(ggplot2)
+library(RColorBrewer)
+```
+
+
+## Loading the Dataset
+```{r}
+df <- read.csv("zomato_pre-processed.csv")
+#head(df)
+```
+
+
+```{r}
+summary(df)
+str(df)
+```
+
+# Visualising the Dataset
+
+### Plot to decribe Online Ordering Facility
+```{r}
+online_order = df$online_order
+barplot(table(online_order),
+      main = "Restaurants With Online Ordering Facility",
+      ylab = "Count",
+      col=brewer.pal(n = 3, name = "Pastel1"))
+table(online_order)
+```
+
+```{r}
+rate = df$rate
+h <- hist(rate,
+          main="Restaurants Ratings",
+          xlab="Rating from 1.0 to 5.0",
+          breaks=30)
+text(h$mids,h$counts,labels=h$counts, adj=c(0.5, -0.5))
+
+print('Mean Rating')
+print(mean(rate))
+
+# h <- hist(rate, main="Restaurants Ratings", xlab="Rating from 1.0 to 5.0",col=brewer.pal(n = 30, name = "Set3"), breaks=30)
+```
+
+### Plot to describe Restaurant Table Booking Option
+```{r}
+book_table = df$book_table
+barplot(table(book_table),
+      main = "Restaurants With Table Booking Option",
+      ylab = "Count",
+      col=brewer.pal(n = 3, name = "Pastel2"))
+table(book_table)
+```
+
+### In Bangalore city,in which area has maximum number of restaurants
+```{r}
+location = df$location
+barplot(table(location))
+setNames(data.frame(table(location)), c("Location", "Number of restaurants"))
+```
+
+### 'Rate' vs 'Restaurant type' graph
+```{r}
+#plot(df$rate, df$rest_type)
+
+# ggplot(df, aes(x = rate, y = rest_type)) +  geom_line()
+
+ggplot(df, aes(y = rate, x = rest_type)) + geom_line()
+
+#Dont paste this
+```
+
+### Naive Baye's Classifier
+```{r}
+#cuisine <- df$cuisines
+#a <- factor(cuisine)
+
+```
+
+```{r}
+r_type <- as.data.frame(df$rest_type, stringsAsFactors=FALSE)
+r_type2 <- as.data.frame(tstrsplit(r_type[,1], ',', 
+                                   type.convert=TRUE), 
+                         stringsAsFactors=FALSE) #DataFlair
+r_type
+colnames(r_type2) <- c(1:2)
+r_type2
+
+c_type <- c('Takeaway', 'Cafe', 'Dessert Parlor', 'Sweet Shop', 'Irani Cafee', 'Delivery', 'Lounge', 'Bhojanalya', 'Meat Shop', 'Club', 'Beverage Shop', 'Microbrewery', 'Dhaba', 'Mess', 'Bar', 'Kiosk', 'Pub', 'Bakery', 'Food Court', 'Quick Bites', 'Fine Dining', 'Food Truck', 'Confectionery', 'Casual Dining', ' Takeaway', ' Cafe', ' Dessert Parlor', ' Sweet Shop', ' Irani Cafee', ' Delivery', ' Lounge', ' Bhojanalya', ' Meat Shop', ' Club', ' Beverage Shop', ' Microbrewery', ' Dhaba', ' Mess', ' Bar', ' Kiosk', ' Pub', ' Bakery', ' Food Court', ' Quick Bites', ' Fine Dining', ' Food Truck', ' Confectionery', ' Casual Dining')
+
+c_mat1 <- matrix(0,36833,48)
+c_mat1[1,] <- c_type
+colnames(c_mat1) <- c_type
+```
+
+```{r}
+for (index in 1:nrow(r_type2)) {
+  for (col in 1:ncol(r_type2)) {
+    c_col = which(c_mat1[1,] == r_type2[index,col]) #Author DataFlair
+    c_mat1[index+1, c_col] <- 1
+  }
+}
+```
+
+```{r}
+c_mat2 <- as.data.frame(c_mat1[-1,], stringsAsFactors=FALSE) #remove first row, which was the genre list
+for (col in 1:ncol(c_mat2)) {
+  c_mat2[,col] <- as.integer(c_mat2[,col]) #convert from characters to integers
+} 
+str(c_mat2)
+```
+
+```{r}
+SearchMatrix <- cbind(df[,1], c_mat2[])
+head(SearchMatrix)    #DataFlair
+```
+
+```{r}
+rating_data <- read.csv("zomato-ratings.csv")
+```
+
+```{r}
+ratingMatrix <- dcast(rating_data, userid~restid, value.var="rate", na.rm=FALSE)
+ratingMatrix <- as.matrix(ratingMatrix[,-1]) #remove userIds
+#Convert rating matrix into a recommenderlab sparse matrix
+ratingMatrix <- as(ratingMatrix, "realRatingMatrix")
+ratingMatrix
+```
+
+```{r}
+recommendation_model <- recommenderRegistry$get_entries(dataType = "realRatingMatrix")
+names(recommendation_model)
+```
+
+```{r}
+lapply(recommendation_model, "[[", "description")
+```
+
+```{r}
+similarity_mat <- similarity(ratingMatrix[1:4, ],
+                               method = "cosine",
+                               which = "users")
+as.matrix(similarity_mat)
+image(as.matrix(similarity_mat), main = "User's Similarities")
+```
+
+```{r}
+rest_similarity <- similarity(ratingMatrix[, 1:4], method =
+                                 "cosine", which = "items")
+as.matrix(rest_similarity)
+image(as.matrix(rest_similarity), main = "Restaurants Types similarity")
+```
+
+```{r}
+rating_values <- as.vector(ratingMatrix@data)
+unique(rating_values) # extracting unique ratings
+
+Table_of_Ratings <- table(rating_values) # creating a count of movie ratings
+Table_of_Ratings
+```
+
+```{r}
+rest_views <- colCounts(ratingMatrix) # count views for each movie
+table_views <- data.frame(restaurant = names(rest_views),
+                          views = rest_views) # create dataframe of views
+table_views <- table_views[order(table_views$views,
+                                 decreasing = TRUE), ] # sort by number of views
+table_views$title <- NA
+for (index in 1:10325){
+  table_views[index,3] <- as.character(subset(movie_data,
+                                         movie_data$movieId == table_views[index,1])$title)
+}
+table_views[1:6,]
+```
+
+
+
+```{r}
+rest_ratings <- ratingMatrix[rowCounts(ratingMatrix) > 50,
+                             colCounts(ratingMatrix) > 50]
+rest_ratings
+```
+
+
+```{r}
+average_ratings <- rowMeans(rest_ratings)
+qplot(average_ratings, fill=I("steelblue"), col=I("red")) +
+  ggtitle("Distribution of the average rating per user")
+```
+

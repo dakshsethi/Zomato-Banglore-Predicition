@@ -1,3 +1,2 @@
-zomato.csv
-zomato_pre-processed.csv
+*.csv
 .Rhistory
