@@ -1,22 +1,49 @@
-#install.packages("party")
+---
+title: "Random Forest"
+author: "19BCE1753-Daksh"
+date: "12/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+# Installing Packages
+# install.packages("party")
+# install.packages("randomForest")
+
+# Loading package
 library(randomForest)
 library(party)
-getwd()
+library(tidyverse)
+```
+
+```{r}
 zomato <- read.csv("zomato1.csv")
+head(zomato)
 str(zomato)
-print(head(zomato))
+```
+
+```{r}
 zomato$Rating.text=factor(zomato$Rating.text)
 zomato$Country.Code=factor(zomato$Country.Code)
 zomato$Currency=factor(zomato$Currency)
 typeof(zomato$Average.Cost.for.two)
+```
 
-output.forest <- randomForest(Rating.text ~ Price.range + Currency + Has.Online.delivery + Votes + Has.Table.booking, 
-                              data = zomato)
-print(output.forest)
+```{r}
+output.forest <- randomForest(Rating.text ~ Price.range + Currency + Has.Online.delivery + Votes + Has.Table.booking, data = zomato)
+output.forest
+```
+
+```{r}
 out.importance <- round(importance(output.forest), 2)
-print(out.importance )
+out.importance
+```
 
-zomato$Rating.color
+```{r}
 zomato$Rating.color[zomato$Rating.color=="Red"] <- "1"
 zomato$Rating.color[zomato$Rating.color=="Yellow"] <- "2"
 zomato$Rating.color[zomato$Rating.color=="White"] <- "3"
@@ -25,18 +52,25 @@ zomato$Rating.color[zomato$Rating.color=="Green"] <- "5"
 zomato$Rating.color[zomato$Rating.color=="Dark Green"] <- "6"
 zomato$Rating.color <- as.numeric(zomato$Rating.color)
 factor(zomato$Rating.color)
-zomato$Rating.color
+```
 
+```{r}
+zomato_india <- subset(zomato, zomato$Country.Code==1)
+head(zomato_india)
+```
 
-library(tidyverse)
-zomato_india <- subset(zomato,zomato$Country.Code==1)
-
-
+```{r}
 model <- lm(zomato_india$Aggregate.rating ~ zomato_india$Rating.color + zomato_india$Votes + zomato_india$Price.range, data = zomato)
 summary(model)
 confint(model)
-#write.csv(zomato,"zomato1.csv")
+```
 
-zomato.rf <- randomForest(Aggregate.rating ~ ., data = zomato_india, mtry = 3,
-                         importance = TRUE, na.action = na.omit)
-print(zomato.rf)
+```{r}
+zomato.rf <- randomForest(Aggregate.rating~.,data=zomato_india, mtry=5, importance = TRUE, na.action = na.omit)
+zomato.rf
+```
+
+```{r}
+round(importance(zomato.rf), 2)
+```
+

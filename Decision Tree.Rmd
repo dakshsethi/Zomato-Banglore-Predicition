@@ -1,0 +1,50 @@
+---
+title: "Decision Tree"
+author: "19BCE1753-Daksh"
+date: "12/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, echo=FALSE}
+# Loading packages
+library(ggplot2)
+library(dplyr)
+library(MASS)
+library(datarium)
+library(rpart)
+library(rpart.plot)
+library(readr)
+library(party)
+```
+
+```{r}
+# Loading the dataset
+zomato <- read.csv("zomato1.csv")
+```
+
+```{r}
+# Splitting data into training and testing data
+set.seed(1234)
+pd <- sample(2,nrow(zomato),replace=TRUE, prob=c(0.8,0.2))
+train <- zomato[pd==1,]
+test <- zomato[pd==2,]
+```
+
+```{r}
+#setting the confidence level
+# setting minimum size as 200 => branch will split into 2 only when sample size is 200
+## when there are restaurants within a good price range and having good votes
+tree <- ctree(Restaurant.ID~Price.range+Votes,data=train, controls = ctree_control(mincriterion = 0.9, minsplit=200))
+tree
+#plot(tree)
+```
+
+```{r}
+pd <- predict(tree,test,type="prob")
+```
+

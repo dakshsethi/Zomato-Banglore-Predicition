@@ -1,5 +1,5 @@
-zom <- read.csv("zomato1.csv")
-View(zom)
+#zom <- read.csv("zomato1.csv")
+#View(zom)
 library(tidyverse)
 library(e1071)
 library(caTools)
