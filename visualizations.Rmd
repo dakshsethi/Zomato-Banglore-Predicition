@@ -1,0 +1,133 @@
+---
+title: "Multivariable Linear Regression"
+author: "19BCE1753-Daksh"
+date: "11/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Packages
+```{r, echo=FALSE}
+library(dplyr)
+library(caTools)
+library(tidyr)
+library(e1071)
+library(class)
+library(randomForest)
+library(party)
+library(datarium)
+library(rpart)
+library(rpart.plot)
+library(readr)
+```
+
+
+# Models
+## 1. Multivariate LM Model
+```{r}
+zomato <- read.csv("zomato2.csv")
+zomato$Cuisines <- as.numeric(zomato$Cuisines)
+
+# Splitting data into train and test data
+split <- sample.split(zomato, SplitRatio = 0.75)
+train <- subset(zomato, split == "TRUE")
+test <- subset(zomato, split == "FALSE")
+paste0("Dimension of Training Set = ", dim(train))
+paste0("Dimension of Testing Set = ", dim(test))
+
+test <- subset(test, select = -c(Restaurant.ID, Restaurant.Name, City, Address, Locality, Locality.Verbose, Longitude, Latitude, Currency, Rating.text))
+test_rate <- test$Aggregate.rating
+
+m <- lm(Aggregate.rating ~ Country.Code + Price.range + Votes + Cuisines + Rating.color, data=test)
+summary(m)
+
+test <- subset(test, select = -c(Aggregate.rating))
+Predicted.Rating <- predict(m, test)
+head(cbind(Predicted.Rating))
+
+# Validating
+count = 0
+for (i in 1:length(Predicted.Rating)) {
+  v1 <- round(Predicted.Rating[i], 1)
+  v2 <- test_rate[i]
+  if(is.na(v1)) {
+    v1 = 0
+  }
+  if((v1-v2 < 0.25) && (v2-v1 < 0.25)) {
+    count = count+1
+  }
+}
+per <- (count/length(Predicted.Rating))*100
+paste0("Accuracy : ", round(per,2), "%")
+
+model <- lm(zomato$Aggregate.rating~zomato$Rating.color)
+plot(model)
+summary(model)
+```
+
+
+## 2. KNN Classifier
+```{r}
+# Loading the dataset
+zomato <- read.csv("zomato2.csv")
+
+# Splitting data into training and testing data
+split <- sample.split(zomato, SplitRatio = 0.7)
+train_cl <- subset(zomato, split == "TRUE")
+test_cl <- subset(zomato, split == "FALSE")
+
+
+train_scale <- scale(train_cl[,c("Country.Code","Price.range","Aggregate.rating","Votes")])
+test_scale <- scale(test_cl[,c("Country.Code","Price.range","Aggregate.rating","Votes")])
+
+classifier_knn <- knn(train = train_scale, test = test_scale, cl = train_cl$Rating.text, k = 1)
+table(classifier_knn)
+
+# Confusion Matrix
+cm <- table(test_cl$Rating.text, classifier_knn)
+cm
+
+misClassError <- mean(classifier_knn != test_cl$Rating.text)
+per <- round((1-misClassError)*100, 2)
+paste0('Accuracy =', per, '%')
+```
+
+
+## 3. Decision Tree
+```{r}
+# Loading the dataset
+data1 <- read.csv("zomato2.csv")
+
+data1$Aggregate.ratingF <- factor(data1$Aggregate.rating)
+
+# Splitting data into training and testing data
+set.seed(1234)
+pd <- sample(2,nrow(data1),replace=TRUE, prob=c(0.8,0.2))
+train <- data1[pd==1,]
+validate <- data1[pd==2,]
+
+tree <- ctree(Aggregate.ratingF~Votes,data=train, controls = ctree_control(mincriterion = 0.9, minsplit=200))
+tree
+plot(tree)
+
+# Prediction
+p <- predict(tree,validate,type="prob")
+paste0("Accuracy = ", 100-sum(unlist(p))/100, "%")
+```
+
+
+## 4. Random Forest
+```{r}
+# Loading the dataset
+zomato <- read.csv("zomato2.csv")
+
+# RF for Rating.text classifier
+zomato$Rating.text <- factor(zomato$Rating.text)
+output.forest <- randomForest( Rating.text~ Votes + Price.range + Aggregate.rating, data = zomato)
+
+print(output.forest) 
+paste0("Accuracy = ", 100-(mean(output.forest$err.rate))*10, "%")
+```

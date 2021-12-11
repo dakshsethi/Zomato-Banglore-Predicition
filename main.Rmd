@@ -1,0 +1,291 @@
+---
+title: "Team-19"
+author: "19BCE1753-Daksh"
+date: "12/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Packages
+```{r, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(tidyr)
+library(readr)
+library(tm)
+library(wordcloud)
+library(treemap)
+library(caTools)
+```
+
+# Loading the dataset
+```{r}
+data = read_csv("zomato.csv")
+data1 = read_csv("zomato_pre-processed.csv")
+data2 = read_csv("zomato2.csv")
+glimpse(data)
+str(data$rate)
+data$rate <- as.factor(data$rate)
+```
+
+# Data Cleaning
+## Removing unnecessary data such as url, address and phone columns from DataFrame
+```{r}
+colnames(data)
+data <- data[,-c(1,2,8)]
+missing_value <- sapply(data,function(x) sum(is.na(x)))
+missing_value
+```
+
+# Visualisations
+## 1. Average Rating By Location in Banglore
+```{r}
+ST1 <- data1 %>% 
+  group_by(location) %>%
+  summarise(
+    avg.rating = mean(rate)
+  ) %>%
+  arrange(desc(avg.rating)) %>%
+  head(10)
+ST1
+ST1 %>%
+  ggplot(aes(x=location,y=avg.rating))+ 
+  geom_bar(stat = "identity")
+```
+### Inference: Top 10 Locations in Banglore have an average rating of above 3.9 which means that these have the most famous or most number of restaurants
+
+
+## 2. Country-Wise Average Rise
+```{r}
+ST2 <- data2 %>%
+  group_by(Country) %>%
+  summarise(
+    avg.rating = mean(`Aggregate rating`)
+  ) %>%
+  arrange(desc(avg.rating))
+ST2
+
+table(data2$Country)
+
+ST2 %>%
+  ggplot(aes(x=Country,y=avg.rating))+ 
+  geom_bar(stat = "identity")
+```
+### Inference: From the table it is visible the India is at the bottom with an average restaurant rating of 2.5 only and Phillipines is at the top with an average rating of 4.46. But in reality, Phillipines has just 22 restaurants while India has 8652 restaurants.
+
+
+## 3. Country-Wise Average Cost
+```{r}
+data2 %>%
+  group_by(Country, Currency) %>%
+  summarise(
+    Average.Cost.for.Two = mean(`Average Cost for two`)
+  )
+```
+### Inference: This data clearly shows how some countries are very much devalued or in-expensive compared to other countries. For example Avergae cost in USA is 26$ while in India it is 623Rs. or just 8$.
+
+
+## 4. TreeMap of Locations in Banglore
+```{r}
+ST3 <- data1 %>%
+  group_by(location, name) %>%
+  summarise(
+    avg.rating = mean(rate)
+  )
+ST3
+treemap(ST3, #Your data frame object
+        index=c("location", "name"),  #A list of your categorical variables
+        vSize = "avg.rating",  #This is your quantitative variable
+        type="index", #Type sets the organization and color scheme of your treemap
+        palette = "Reds",  #Select your color palette from the RColorBrewer presets or make your own.
+        title="TreeMap of locations in Banglore", #Customize your title
+        fontsize.title = 14 #Change the font size of the title
+        )
+```
+### Inference: This TreeMap shows the top locations in Banglore. BTM, Whitefield and HSR are the top location according to restaurant count.
+
+
+
+## 5. Top Restaurants Outlets in Banglore
+```{r}
+names(data)
+top_rest_type <- data %>% select(name) %>% group_by(name) %>% count() %>% arrange(desc(n))
+top_rest_type <- top_rest_type[1:10,]
+
+top_rest_type %>%
+  ggplot(aes(x=reorder(name,n),y=n))+ 
+  geom_bar(stat = "identity") + 
+  coord_flip()
+```
+### Inference: As you can see Cafe coffee day,Onesta, Just Bake has the most number of outlets in and around bangalore.
+
+
+## 6. How many of the restuarants do not accept online orders? 
+```{r}
+DAOO <- data %>% select(name,online_order) %>% group_by(online_order) %>% count()
+library(scales)
+mycols <- c("#0073C2FF", "#EFC000FF")
+ggplot(DAOO, aes(x = "", y = n, fill = online_order)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0)+
+  geom_text(aes(y = n/2 + c(0, cumsum(n)[-length(n)]), 
+                label = round(DAOO$n/sum(n)*100,2)), size=6)+
+  scale_fill_manual(values = mycols) +
+  theme_void()
+```
+### Inference: As clearly indicated,almost 60% of restaurants in Banglore accepts online orders. Nearly 40% of the restaurants do not accept online orders.
+
+
+## 7. What is the ratio b/w restaurants that provide and do not provide table?
+```{r}
+ROTB <- data %>% select(book_table) %>% group_by(book_table) %>% count() 
+
+mycols <- c("#0073C2FF", "#EFC000FF")
+ggplot(ROTB , aes(x = "", y = n, fill = book_table)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0)+
+  geom_text(aes(y = n/13 + c(0, cumsum(n)[-length(n)]), 
+                label = round(DAOO$n/sum(n)*100,2)), size=4)+
+  scale_fill_manual(values = mycols) +
+  theme_void()
+```
+### Inference: Almost 90% of restaurants in Banglore do not provide table booking facility. In India you cannot find table booking facility in any average restaurants,usually only five star restaurants provides table booking.
+
+
+## 8. Rating Distribution
+```{r}
+RC <- data1 %>% select(rate)%>% group_by(rate) %>% count() 
+RC <- RC[-c(1,33,34),]
+RC %>%
+  ggplot(aes(x=reorder(rate,n),y=n))+ 
+  geom_bar(stat = "identity", fill= "steelblue") + theme_minimal()+
+  coord_flip() + geom_text(aes(label=n),vjust=0.3,size=3.5,color="black")
+```
+### Inference: We can see that 3.9 is the most common rating people have given to restaurants in Banglore, which means most of the restaurants are good.
+
+
+## 9. Cost vs Rating
+```{r}
+data$rate <- gsub('\\s+', '', data$rate)
+data$online_order <- gsub('\\s+', '', data$online_order)
+data$`approx_cost(for two people)` <- gsub('\\s+', '', data$`approx_cost(for two people)`)
+
+CR <- data %>% select(rate,online_order,`approx_cost(for two people)`) %>% arrange(desc(`approx_cost(for two people)`))  
+CR <- na.omit(CR)
+names(CR)
+names(CR)[3]<- "Approx_cost_two_P"
+CR$Approx_cost_two_P <-as.numeric(CR$Approx_cost_two_P)
+ggplot(CR, aes(x=rate, y=Approx_cost_two_P, color=online_order, shape=online_order)) +
+  geom_point() +scale_y_continuous(breaks = seq(0,6000,1000)) 
+```
+
+
+## 10. Distribution of cost for two people
+```{r}
+ACOT <- data$`approx_cost(for two people)` 
+ggplot(data,aes(x=as.numeric(ACOT)))+ geom_density(adjust=1/2,color="midnightblue",fill="lightblue")+scale_x_continuous(breaks = seq(0,6000,1000))
+```
+### Inference: The denisty of 400-500 is quite the highest which means on average a restuarants will charge 2 people in this range. We can see that the distribution if left skewed. This means almost 90percent of restaurants serve food for budget less than 1000 INR.($15)
+
+
+## 11. Which are the most common restaurant type in Banglore?
+```{r}
+data$rest_type <- gsub('\\s+', '', data$rest_type)
+MCR <- data %>% select(rest_type) %>% group_by(rest_type) %>% count() %>% arrange(desc(n)) %>% head(10)
+MCR
+MCR %>%
+  ggplot(aes(x=reorder(rest_type,n),y=n))+ 
+  geom_bar(stat = "identity",fill="lightblue",color="midnightblue") + 
+  coord_flip() +geom_text(aes(label=n),vjust=0.5,size=3.5,color="black")
+```
+### Inference: No doubt about this as Banglore is known as the tech capital of India,people having busy and modern life will prefer Quick Bites. We can observe tha Quick Bites type restaurants dominates.
+
+## 12. BoxPlot for Average Cost for Two
+```{r}
+data$`approx_cost(for two people)` <- as.numeric(data$`approx_cost(for two people)`)
+summary(data$`approx_cost(for two people)`,)
+boxplot(data$`approx_cost(for two people)`)
+```
+### Inference: The median approximate cost for two people is 400 for a single meal. 50 percent of restaurants charge between 300 and 650 for single meal for two people.
+
+
+## 13. Which are the foodie areas?
+```{r}
+FA <- data %>% select(location) %>% group_by(location) %>% count() %>% arrange(desc(n)) %>% head(16)
+
+FA %>%
+  ggplot(aes(x=reorder(location,n),y=n))+ 
+  geom_bar(stat = "identity",fill="lightblue",color="darkblue") + 
+  coord_flip() +geom_text(aes(label=n),vjust=0.5,size=3.5,color="black")
+```
+### Inference: We can see that BTM,HSR and Koranmangala 5th block has the most number of restaurants. BTM dominates the section by having more than 5000 restaurants.
+
+
+## 14. Which are the most common cuisines in each locations?
+```{r}
+CCEL <- data %>% 
+  select(location,cuisines) %>% 
+  group_by(location,cuisines)%>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  head(15)
+CCEL
+```
+### Inference: North Indian with Chinese is the most famous cuisine.
+
+
+## 15. Wordcloud of dishes liked by cuisines and rest_type=QuickBites
+```{r, echo=FALSE}
+data$cuisines<- gsub('\\s+', '',data$cuisines)
+WDLC<- data %>% select(rest_type,cuisines) %>% filter(rest_type=="QuickBites") 
+
+### read data
+text<- WDLC$cuisines
+#text <- readLines("annotation.txt")
+
+text <- paste(text,collapse = " ")
+
+Corpus <- Corpus(VectorSource(text))
+########wordcloud ############################
+Corpus <- tm_map(Corpus,tolower)
+Corpus <- tm_map(Corpus,removePunctuation)
+Corpus <- tm_map(Corpus,removeNumbers)
+cleanset <-tm_map(Corpus,removeWords,stopwords("english"))
+cleanset <- tm_map(Corpus,stripWhitespace)
+cleanset <- tm_map(cleanset,PlainTextDocument)
+tdm <- TermDocumentMatrix(Corpus)
+
+m <-as.matrix(tdm)
+as <- rowSums(m)
+wordFreq <- sort(as, decreasing = TRUE)
+set.seed(113)
+
+wordcloud(words = names(wordFreq),freq = wordFreq,min.freq = 150,max.words = 50,random.order = F,colors = rainbow(20))
+
+```
+
+
+## 16. Average votes per restaurant by Country code
+```{r}
+d3 <- data2%>%
+  group_by(Country)%>%
+  summarise(
+    count=n(),
+    avg_votes=mean(Votes)
+  )
+d3
+ggplot(d3,aes(x=Country,y=avg_votes)) + geom_bar(stat="identity",color="Blue")
+```
+#### The above bar plot represnts the avg. votes per restaurant in the country by country code, India has a lower number of avg.votes just because the number of restaurants are very much greater. And other countries despite of having fewer restaurants have a greater number of votes per restaurant in the plot.
+
+```{r}
+d4 <- data2 %>%
+  subset(Country == 'India')
+table(d4$`Has Table booking`)
+pie(table(d4$`Has Online delivery`),c("Restaurants without\n table booking","Restaurants with \nTable Booking"),main="Pie graph to represnt distribution\n of restaurants offering / not offering online Table Booking")
+```
+## Inference: Out of 8652 restaurants only 1111 restaurants offer table booking, rest of them dont have the option of table booking thus highlights the trend that more restaurants opt for online delivery rather than opening physical restaurants especially in metropolitan cities of India
