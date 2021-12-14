@@ -6,4 +6,4 @@ GDrive Link for CSV Files
 
 [IPYNB File Link](https://github.com/rajkumarjagdale/Exploratory-Data-Analysis-and-Classification-Using-the-Zomato-Bangalore-Restaurants-Dataset)
 
-More models will be added in folders.
+Models are in main.html and models.html
